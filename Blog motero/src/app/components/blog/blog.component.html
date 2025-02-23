@@ -1,0 +1,19 @@
+<section class="blog">
+    <div class="formulario">
+        <form (ngSubmit)="agregarNoticia(titulo, contenido, fecha, url)" #blogForm="ngForm">
+            <input type="text" name="title" [(ngModel)]="titulo" placeholder="Título de noticia">
+            <input type="text" name="url" [(ngModel)]="url" placeholder="URL de la imagen">
+            <textarea name="content" [(ngModel)]="contenido" placeholder="Cuerpo de la noticia"></textarea>
+            <input type="date" name="date" [(ngModel)]="fecha" placeholder="Fecha de publicación">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="noticias">
+        @for (noticia of noticias; track $index) {
+            <h3>{{ noticia.titulo }}</h3>
+            <img src="{{noticia.url}}" alt="{{noticia.titulo}}">
+            <p>{{ noticia.contenido }}</p>
+            <p class="fecha">Fecha de publicación: {{ noticia.fecha }}</p>
+        }
+    </div>
+</section>
